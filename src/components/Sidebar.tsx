@@ -2,31 +2,21 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const PAGES_AND_LINKS = [
-  {
-    page: "PROJECTS",
-    link: "/projects",
-    useLinkComp: true,
-  },
-  {
-    page: "EXPERIENCE",
-    link: "/projects",
-    useLinkComp: true,
-  },
+export const PAGES_AND_LINKS: readonly {
+  page: string;
+  link: string;
+}[] = [
   {
     page: "GITHUB",
     link: "https://github.com/banushi-a",
-    useLinkComp: false,
   },
   {
     page: "RESUME",
     link: "https://drive.google.com/file/d/1n6iaC1VFfWFsr4G_2dYbmQD_feSuaUrb/view?usp=sharing",
-    useLinkComp: false,
   },
   {
     page: "CONTACT",
     link: "mailto:altonbanushi@icloud.com",
-    useLinkComp: false,
   },
 ] as const;
 
@@ -57,21 +47,28 @@ const Sidebar = ({ className }: SidebarProps) => {
       >
         <div className="flex p-8 items-center">
           <div className="flex-col">
-            {PAGES_AND_LINKS.map(({ page, link, useLinkComp }, i) => {
-              if (useLinkComp) {
-                <h1
-                  key={page + i}
-                  className="text-3xl text-my-dark-blue font-sans font-bold pb-8"
-                >
-                  <Link to={link}>{page}</Link>
-                </h1>;
-              }
+            <h1 className="text-3xl text-my-dark-blue font-sans font-bold pb-8">
+              <Link to="/projects" onClick={() => setShowSidebar(false)}>
+                PROJECTS
+              </Link>
+            </h1>
+            <h1 className="text-3xl text-my-dark-blue font-sans font-bold pb-8">
+              <Link to="/experience" onClick={() => setShowSidebar(false)}>
+                EXPERIENCE
+              </Link>
+            </h1>
+            {PAGES_AND_LINKS.map(({ page, link }, i) => {
               return (
                 <h1
                   key={page + i}
                   className="text-3xl text-my-dark-blue font-sans font-bold pb-8"
                 >
-                  <a target="_blank" href={link} rel="noreferrer">
+                  <a
+                    target="_blank"
+                    href={link}
+                    rel="noreferrer"
+                    onClick={() => setShowSidebar(false)}
+                  >
                     {page}
                   </a>
                 </h1>
