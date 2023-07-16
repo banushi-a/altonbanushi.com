@@ -46,7 +46,7 @@ const Home = (): JSX.Element => {
     >
       <div className="container mx-auto flex flex-col py-24 items-center justify-center">
         <div className="text-center lg:w-10/12 w-full">
-          <h2 className="my-4 text-5xl font-bold leading-tight">
+          <h2 className="my-4 text-5xl font-bold font-mono leading-tight">
             {professionNoun}
           </h2>
           <h1 className="text-[4rem] sm:text-[6rem] md:text-[9rem] mb-8 bg-gradient-to-r from-my-pink to-my-blue bg-clip-text text-transparent">
