@@ -38,6 +38,11 @@ const Projects = (): JSX.Element => {
           "linear-gradient(190deg, rgb(28, 28, 65) 30%, rgb(7, 152, 249) 100%)",
       }}
     >
+      <div className="container mx-auto flex pt-20 items-center justify-center">
+        <h2 className="text-[4rem] md:text-[5rem] lg:text-[8rem] bg-gradient-to-t from-my-pink to-my-blue bg-clip-text text-transparent text-center">
+          My Projects
+        </h2>
+      </div>
       <div className="container mx-auto flex flex-col py-24 items-center justify-center">
         {projectObjects.map((projectObject, i) => {
           return (
