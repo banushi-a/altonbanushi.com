@@ -31,7 +31,7 @@ const Navbar = (): JSX.Element => {
             <li className={liClassName}>
               <a
                 target="_blank"
-                href="https://drive.google.com/file/d/1n6iaC1VFfWFsr4G_2dYbmQD_feSuaUrb/view?usp=sharing"
+                href="https://drive.google.com/file/d/1tVsDA55Y-nfwR413uYwX2D5P5JGPcyBG/view?usp=sharing"
                 rel="noreferrer"
               >
                 Resume
