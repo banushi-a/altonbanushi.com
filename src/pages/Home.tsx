@@ -7,6 +7,21 @@ const professionNouns = [
   "Researcher.",
 ] as const;
 
+const linkObjects: { link: string; name: string }[] = [
+  {
+    link: "https://www.linkedin.com/in/alton-banushi/",
+    name: "LinkedIn",
+  },
+  {
+    link: "https://www.sandboxnu.com/",
+    name: "Sandbox",
+  },
+  {
+    link: "https://www.khoury.northeastern.edu/",
+    name: "Khoury College",
+  },
+];
+
 const Home = (): JSX.Element => {
   const [professionNoun, setProfessionNoun] = useState<string>(
     professionNouns[0][0]
@@ -53,15 +68,19 @@ const Home = (): JSX.Element => {
             Alton Banushi
           </h1>
           <div className="flex flex-wrap justify-center mx-auto lg:w-5/12">
-            <button className="my-2 hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8">
-              <a href="https://www.linkedin.com/in/alton-banushi/">LinkedIn</a>
-            </button>
-            <button className="ml-4 my-2 hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8">
-              <a href="https://www.sandboxnu.com/">Sandbox</a>
-            </button>
-            <button className="ml-4 my-2 hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8">
-              <a href="https://www.khoury.northeastern.edu/">Khoury College</a>
-            </button>
+            {linkObjects.map((linkObject) => {
+              return (
+                <button className="my-2 mx-2 hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8">
+                  <a
+                    href={linkObject.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {linkObject.name}
+                  </a>
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
