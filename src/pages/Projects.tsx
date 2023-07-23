@@ -1,8 +1,12 @@
 import floodit from "../images/floodit-screenshot.png";
 import maze from "../images/maze.png";
 import ipa from "../images/IPA.png";
+import downArrow from "../images/icons/down-arrow.svg";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const projectObjects = [
   {
@@ -33,9 +37,76 @@ const projectObjects = [
 
 const Projects = (): JSX.Element => {
   const titleRef = useRef<any>();
+  const projectRefs = useRef<any[]>([]);
 
+  // Projects JSX
+  const projectComponents: JSX.Element[] = projectObjects.map(
+    (projectObject, i) => {
+      return (
+        <div
+          className={`container flex flex-col items-center ${
+            i === projectObjects.length - 1 ? "mb-12" : "mb-24"
+          }`}
+          ref={(element) => projectRefs.current.push(element)}
+          key={projectObject.name + i}
+        >
+          <h3 className="text-white tracking-[0.125em] font-bold font-mono text-center">
+            {projectObject.summary}
+          </h3>
+          <h2 className="text-white tracking-[0.125em] font-bold text-3xl text-center pt-2">
+            {projectObject.name}
+          </h2>
+          <center className="w-11/12 md:w-7/12 pt-3 leading-7">
+            {projectObject.description}
+          </center>
+          <div className="flex flex-wrap justify-center mx-auto">
+            {projectObject.skills.map((skill) => {
+              return (
+                <button className="my-2 mx-2 bg-white text-gray-800 font-bold rounded-full py-3 px-5">
+                  {skill}
+                </button>
+              );
+            })}
+          </div>
+          <img
+            src={projectObject.image}
+            alt={`${projectObject.name} + Project`}
+            className="w-10/12 md:w-7/12 mt-2"
+          />
+        </div>
+      );
+    }
+  );
+
+  // gsap animations
   useLayoutEffect(() => {
-    gsap.fromTo(titleRef.current, { y: -100 }, { duration: 1, y: 0 });
+    gsap.fromTo(
+      titleRef.current,
+      { y: -100, opacity: 0 },
+      { duration: 2, y: 0, opacity: 1 }
+    );
+
+    projectRefs.current.forEach((ref) => {
+      gsap.fromTo(
+        ref,
+        {
+          opacity: 0,
+          y: -50,
+        },
+        {
+          scrollTrigger: {
+            trigger: ref,
+            toggleActions: "restart none none none",
+            start: "50px 80%",
+            end: "50px 60%",
+            once: true,
+          },
+          opacity: 1,
+          y: 0,
+          duration: 2,
+        }
+      );
+    });
   }, []);
 
   return (
@@ -46,48 +117,18 @@ const Projects = (): JSX.Element => {
           "linear-gradient(190deg, rgb(28, 28, 65) 30%, rgb(7, 152, 249) 100%)",
       }}
     >
-      <div
-        className="container mx-auto flex pt-20 items-center justify-center"
-        ref={titleRef}
-      >
-        <h2 className="text-[4rem] md:text-[5rem] lg:text-[8rem] bg-gradient-to-t from-my-pink to-my-blue bg-clip-text text-transparent text-center">
+      <div className="container mx-auto flex flex-col h-[85vh] items-center justify-between">
+        <div></div>
+        <h2
+          className="text-[4rem] md:text-[5rem] lg:text-[8rem] bg-gradient-to-t from-my-pink to-my-blue bg-clip-text text-transparent text-center"
+          ref={titleRef}
+        >
           My Projects
         </h2>
+        <img src={downArrow} alt="down arrow" className="h-10" />
       </div>
       <div className="container mx-auto flex flex-col py-24 items-center justify-center">
-        {projectObjects.map((projectObject, i) => {
-          return (
-            <div
-              className={`container flex flex-col items-center ${
-                i === projectObjects.length - 1 ? "mb-12" : "mb-24"
-              }`}
-            >
-              <h3 className="text-white tracking-[0.125em] font-bold font-mono text-center">
-                {projectObject.summary}
-              </h3>
-              <h2 className="text-white tracking-[0.125em] font-bold text-3xl text-center pt-2">
-                {projectObject.name}
-              </h2>
-              <center className="w-11/12 md:w-7/12 pt-3 leading-7">
-                {projectObject.description}
-              </center>
-              <div className="flex flex-wrap justify-center mx-auto">
-                {projectObject.skills.map((skill) => {
-                  return (
-                    <button className="my-2 mx-2 bg-white text-gray-800 font-bold rounded-full py-3 px-5">
-                      {skill}
-                    </button>
-                  );
-                })}
-              </div>
-              <img
-                src={projectObject.image}
-                alt={`${projectObject.name} + Project`}
-                className="w-10/12 md:w-7/12 mt-2"
-              />
-            </div>
-          );
-        })}
+        {projectComponents}
       </div>
     </div>
   );
