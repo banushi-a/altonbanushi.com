@@ -44,7 +44,7 @@ const Home = (): JSX.Element => {
           "linear-gradient(180deg, rgb(28, 28, 65) 32%, rgb(7, 152, 249) 100%)",
       }}
     >
-      <div className="container mx-auto flex flex-col py-24 items-center justify-center">
+      <div className="container h-[70vh] mx-auto flex flex-col py-24 items-center justify-center">
         <div className="text-center lg:w-10/12 w-full">
           <h2 className="my-4 text-5xl font-bold font-mono leading-tight">
             {professionNoun}
