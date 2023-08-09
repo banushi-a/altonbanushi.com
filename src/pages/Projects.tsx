@@ -83,7 +83,7 @@ const Projects = (): JSX.Element => {
     gsap.fromTo(
       titleRef.current,
       { y: -100, opacity: 0 },
-      { duration: 2, y: 0, opacity: 1 }
+      { duration: 1.5, y: 0, opacity: 1 }
     );
 
     projectRefs.current.forEach((ref) => {
