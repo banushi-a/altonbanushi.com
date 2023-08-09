@@ -1,12 +1,91 @@
 import { useLayoutEffect, useRef } from "react";
+import ubs from "../images/UBS_Logo.png";
+import neu from "../images/Northeastern-University-Logo.png";
+import sandbox from "../images/sandbox-logo.png";
 import downArrow from "../images/icons/down-arrow.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+type experienceObject = {
+  image: any;
+  company: string;
+  jobTitle: string;
+  description: string;
+  skills: string[];
+  extraImgStyles?: string;
+};
+
+const experienceObjects: experienceObject[] = [
+  {
+    image: ubs,
+    company: "UBS",
+    jobTitle: "Quantitative Developer Co-op",
+    description: "",
+    skills: [
+      "TypeScript",
+      "React",
+      "Python",
+      "SQL",
+      "Mixed Integer Programming",
+      "Linear Algebra",
+      "Portfolio Optimization",
+    ],
+    extraImgStyles: "p-4",
+  },
+  {
+    image: neu,
+    company: "Northeastern University",
+    jobTitle: "Teaching Assistant",
+    description: "",
+    skills: ["Algorithms", "Programming", "Teaching"],
+  },
+  {
+    image: sandbox,
+    company: "Sandbox",
+    jobTitle: "Head of Developer Experience",
+    description: "",
+    skills: ["TypeScript", "React", "SQL", "Python", "Flask"],
+  },
+];
+
 export const Experience = (): JSX.Element => {
   const titleRef = useRef<any>();
+
+  const experienceComponents: JSX.Element[] = experienceObjects.map(
+    (experienceObject, i) => {
+      const image = (
+        <img
+          src={experienceObject.image}
+          alt={experienceObject.company + " Company Image"}
+          className={
+            "w-[40vw] border-4 border-white rounded-lg " +
+            experienceObject.extraImgStyles
+          }
+        />
+      );
+      const info = <div>{i}</div>;
+      return (
+        <div
+          key={experienceObject.jobTitle}
+          className="container px-5 mt-24 flex justify-between align-center"
+        >
+          {i % 2 === 0 ? (
+            <>
+              {image}
+              {info}
+            </>
+          ) : (
+            <>
+              {info}
+              {image}
+            </>
+          )}
+        </div>
+      );
+    }
+  );
 
   useLayoutEffect(() => {
     gsap.fromTo(
@@ -34,7 +113,9 @@ export const Experience = (): JSX.Element => {
         </h2>
         <img src={downArrow} alt="down arrow" className="h-10" />
       </div>
-      <div className="flex py-24 justify-center bg-white"></div>
+      <div className="container mx-auto flex flex-col py-24 items-center justify-center">
+        {experienceComponents}
+      </div>
     </div>
   );
 };
