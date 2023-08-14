@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from "react";
 import ubs from "../images/UBS_Logo.png";
 import neu from "../images/Northeastern-University-Logo.png";
 import sandbox from "../images/sandbox-logo.png";
-import downArrow from "../images/icons/down-arrow.svg";
+import downArrow from "../images/icons/down-arrow-blue.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -22,31 +22,26 @@ const experienceObjects: experienceObject[] = [
     image: ubs,
     company: "UBS",
     jobTitle: "Quantitative Developer Co-op",
-    description: "",
-    skills: [
-      "TypeScript",
-      "React",
-      "Python",
-      "SQL",
-      "Mixed Integer Programming",
-      "Linear Algebra",
-      "Portfolio Optimization",
-    ],
-    extraImgStyles: "p-4",
+    description:
+      "Work to develop in-house software to implement investment strategies, visualize data, and optimize portfolios ",
+    skills: ["MIP", "Linear Algebra", "Full Stack"],
+    extraImgStyles: "p-8",
   },
   {
     image: neu,
     company: "Northeastern University",
     jobTitle: "Teaching Assistant",
-    description: "",
-    skills: ["Algorithms", "Programming", "Teaching"],
+    description:
+      "Instruct students on algorithm and programming coursework; Provide individualized feedback on homework and lab assignments",
+    skills: ["Algorithms", "Data", "Teaching"],
   },
   {
     image: sandbox,
     company: "Sandbox",
     jobTitle: "Head of Developer Experience",
-    description: "",
-    skills: ["TypeScript", "React", "SQL", "Python", "Flask"],
+    description:
+      "Work to onboard developers; Develop software for researchers and clients",
+    skills: ["React", "SQL", "Python", "Flask"],
   },
 ];
 
@@ -54,34 +49,46 @@ export const Experience = (): JSX.Element => {
   const titleRef = useRef<any>();
 
   const experienceComponents: JSX.Element[] = experienceObjects.map(
-    (experienceObject, i) => {
+    (experienceObject) => {
       const image = (
-        <img
-          src={experienceObject.image}
-          alt={experienceObject.company + " Company Image"}
-          className={
-            "w-[40vw] border-4 border-white rounded-lg " +
-            experienceObject.extraImgStyles
-          }
-        />
+        <div className="rounded-md md:w-[40vw] bg-gradient-to-r from-my-dark-blue via-my-blue to-my-pink p-1 mb-4 md:mb-0">
+          <img
+            src={experienceObject.image}
+            alt={experienceObject.company + " Company Image"}
+            className={
+              "md:w-[40vw] bg-white " + experienceObject.extraImgStyles
+            }
+          />
+        </div>
       );
-      const info = <div>{i}</div>;
+      const info = (
+        <div className="md:ml-4 flex flex-col justify-between">
+          <div>
+            <h2 className="font-bold text-2xl">{experienceObject.jobTitle}</h2>
+            <p>{experienceObject.description}</p>
+          </div>
+          <div>
+            {experienceObject.skills.map((skill, i) => {
+              return (
+                <button
+                  className={`my-1 ${
+                    i > 0 ? "mx-1" : " mr-1"
+                  } hover:underline bg-white text-gray-800 font-bold rounded-full border border-my-dark-blue py-2 px-4`}
+                >
+                  {skill}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      );
       return (
         <div
           key={experienceObject.jobTitle}
-          className="container px-5 mt-24 flex justify-between align-center"
+          className="container px-5 mt-24 grid grid-cols-1 md:grid-cols-2"
         >
-          {i % 2 === 0 ? (
-            <>
-              {image}
-              {info}
-            </>
-          ) : (
-            <>
-              {info}
-              {image}
-            </>
-          )}
+          {image}
+          {info}
         </div>
       );
     }
@@ -96,14 +103,13 @@ export const Experience = (): JSX.Element => {
   }, []);
 
   return (
-    <div
-      className="text-white bg-my-blue"
-      style={{
-        background:
-          "linear-gradient(150deg, rgb(28, 28, 65) 50%, rgb(7, 152, 249) 100%)",
-      }}
-    >
-      <div className="flex flex-col h-[85vh] items-center justify-between mx-auto">
+    <div className="text-my-dark-blue bg-white">
+      <div
+        className="flex flex-col h-[85vh] items-center justify-between mx-auto"
+        style={{
+          background: "linear-gradient(180deg, rgb(28, 28, 65) 0%, white 50%)",
+        }}
+      >
         <div></div>
         <h2
           className="text-[4rem] md:text-[5rem] lg:text-[8rem] bg-gradient-to-b from-my-pink to-my-blue bg-clip-text text-transparent text-center"
