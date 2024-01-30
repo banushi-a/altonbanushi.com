@@ -12,7 +12,7 @@ export const PAGES_AND_LINKS: readonly {
   },
   {
     page: "RESUME",
-    link: "https://drive.google.com/file/d/1n6iaC1VFfWFsr4G_2dYbmQD_feSuaUrb/view?usp=sharing",
+    link: "https://drive.google.com/file/d/17MKe49JRujn1AhGXypVOzrHEKqUaIW43/view?usp=sharing",
   },
   {
     page: "CONTACT",
