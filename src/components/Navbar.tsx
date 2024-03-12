@@ -31,7 +31,7 @@ const Navbar = (): JSX.Element => {
             <li className={liClassName}>
               <a
                 target="_blank"
-                href="https://drive.google.com/file/d/17MKe49JRujn1AhGXypVOzrHEKqUaIW43/view?usp=sharing"
+                href={require("../resume-alton-banushi.pdf")}
                 rel="noreferrer"
               >
                 Resume
