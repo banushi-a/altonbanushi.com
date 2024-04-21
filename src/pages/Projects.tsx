@@ -89,7 +89,7 @@ const Projects = (): JSX.Element => {
           <img
             src={projectObject.image}
             alt={`${projectObject.name} + Project`}
-            className="w-10/12 md:w-7/12 mt-2"
+            className="w-10/12 md:w-7/12 mt-2 rounded-2xl"
           />
         </div>
       );
