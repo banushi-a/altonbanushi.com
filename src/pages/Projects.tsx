@@ -1,6 +1,8 @@
 import floodit from "../images/floodit-screenshot.png";
 import maze from "../images/maze.png";
 import ipa from "../images/IPA.png";
+import cooper from "../images/cooper-ex.png";
+import sga from "../images/sga-ex.png";
 import downArrow from "../images/icons/down-arrow.svg";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -9,6 +11,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 const projectObjects = [
+  {
+    image: cooper,
+    name: "Cooper NU",
+    summary: "Co-op Review Platform",
+    description:
+      "Worked to create a co-op review platform that enables Northeastern students to learn more about their co-op and reach out to previous employees. Develop the web application using the T3 stack alongside an agile team of developers, designers, and a project manager.",
+    skills: ["React", "Next.js", "TypeScript", "Postgres"],
+  },
+  {
+    image: sga,
+    name: "SGA Member Tracker",
+    summary: "Internal Software",
+    description:
+      "Collaborated with designers, developers, and client to digitize the student government member tracking system. Implement the front-end using React, Tailwind, and TypeScript and the back-end using Express.js, Typscript, and MySQL",
+    skills: ["React", "Express", "MySQL"],
+  },
   {
     image: maze,
     name: "Maze Generator and Solver",
