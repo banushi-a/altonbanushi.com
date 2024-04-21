@@ -1,3 +1,3 @@
 # My Updated Personal Website !
 
-[Click Here!](altonbanushi.com)
+[Click Here!](http://altonbanushi.com)
