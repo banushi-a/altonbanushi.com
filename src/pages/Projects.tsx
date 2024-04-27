@@ -3,6 +3,7 @@ import maze from "../images/maze.png";
 import ipa from "../images/IPA.png";
 import cooper from "../images/cooper-ex.png";
 import sga from "../images/sga-ex.png";
+import reflective from "../images/reflective-surfaces.png";
 import downArrow from "../images/icons/down-arrow.svg";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
@@ -16,7 +17,7 @@ const projectObjects = [
     name: "Cooper NU",
     summary: "Co-op Review Platform",
     description:
-      "Worked to create a co-op review platform that enables Northeastern students to learn more about their co-op and reach out to previous employees. Develop the web application using the T3 stack alongside an agile team of developers, designers, and a project manager.",
+      "Worked to create a co-op review platform that enables Northeastern students to learn more about their co-op and reach out to previous employees. Developed the web application using the T3 stack alongside an agile team of developers, designers, and a project manager.",
     skills: ["React", "Next.js", "TypeScript", "Postgres"],
   },
   {
@@ -24,8 +25,16 @@ const projectObjects = [
     name: "SGA Member Tracker",
     summary: "Internal Software",
     description:
-      "Collaborated with designers, developers, and client to digitize the student government member tracking system. Implement the front-end using React, Tailwind, and TypeScript and the back-end using Express.js, Typscript, and MySQL",
+      "Collaborated with designers, developers, and client to digitize the student government member tracking system. Implemented the front-end using React, Tailwind, and TypeScript and the back-end using Express.js, Typscript, and MySQL",
     skills: ["React", "Express", "MySQL"],
+  },
+  {
+    image: reflective,
+    name: "Reflective Function Visualizer",
+    summary: "OpenGL Project",
+    description:
+      "Developed a graphics application that allows users to input mathematical functions and visualize their reflective properties in an enviornment. Users can manage up to 10 functions at once, view their wireframe meshes, display the normals, and invert the direction that the reflections are coming from.",
+    skills: ["OpenGL", "C++", "GLM"],
   },
   {
     image: maze,
