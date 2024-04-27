@@ -94,7 +94,7 @@ export const Experience = (): JSX.Element => {
             <p className="font-semibold italic">{experienceObject.date}</p>
             <p>{experienceObject.description}</p>
           </div>
-          <div>
+          <div className="mt-4 md:mt-0">
             {experienceObject.skills.map((skill, i) => {
               return (
                 <span
