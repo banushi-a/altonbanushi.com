@@ -36,7 +36,7 @@ const experienceObjects: experienceObject[] = [
     company: "TD Securities",
     jobTitle: "Software Engineering Intern",
     description:
-      "Incoming SWE Intern at TD Securities at the New York City office",
+      "Develop software solutions for corporate investment banking ooperations in an agile enviornment",
     date: "Jun 2024 - Aug 2024",
     skills: ["Software Development"],
     extraImgStyles: "p-8",
