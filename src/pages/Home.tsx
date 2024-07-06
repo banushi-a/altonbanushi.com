@@ -36,7 +36,7 @@ const Home = (): JSX.Element => {
           const nextIdx = (currProfessionNoun + 1) % professionNouns.length;
           setProfessionNoun(professionNouns[nextIdx].slice(0, 1));
           setCurrProfessionNoun(nextIdx);
-        }, 4000);
+        }, 3000);
       } else {
         setTimeout(() => {
           setProfessionNoun(
@@ -45,7 +45,7 @@ const Home = (): JSX.Element => {
               professionNoun.length + 1
             )
           );
-        }, 400 * Math.random());
+        }, 200 * Math.random());
       }
     };
     updateWord();
