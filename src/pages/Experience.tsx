@@ -36,7 +36,7 @@ const experienceObjects: experienceObject[] = [
     company: "TD Securities",
     jobTitle: "Software Engineering Intern",
     description:
-      "Develop software solutions for corporate investment banking ooperations in an agile enviornment",
+      "Develop software solutions for corporate investment banking operations in an agile enviornment",
     date: "Jun 2024 - Aug 2024",
     skills: ["Software Development"],
     extraImgStyles: "p-8",
@@ -71,30 +71,32 @@ const experienceObjects: experienceObject[] = [
   },
 ];
 
-export const Experience = (): JSX.Element => {
+const Experience = (): JSX.Element => {
   const titleRef = useRef<any>();
+  const experienceRefs = useRef<any[]>([]);
 
   const experienceComponents: JSX.Element[] = experienceObjects.map(
     (experienceObject) => {
       const image = (
-        <div className="rounded-md md:w-[40vw] bg-gradient-to-r from-my-dark-blue via-my-blue to-my-pink p-1 mb-4 md:mb-0">
+        <div className="rounded-2xl lg:w-[40vw] bg-gradient-to-r from-my-dark-blue via-my-blue to-my-pink p-1 mb-4 md:mb-0">
           <img
             src={experienceObject.image}
             alt={experienceObject.company + " Company Image"}
             className={
-              "md:w-[40vw] bg-white " + experienceObject.extraImgStyles
+              "lg:w-[40vw] bg-white rounded-2xl " +
+              experienceObject.extraImgStyles
             }
           />
         </div>
       );
       const info = (
-        <div className="md:ml-4 flex flex-col justify-between text-white">
+        <div className="lg:ml-4 flex flex-col justify-between text-white">
           <div>
             <h2 className="font-bold text-2xl">{experienceObject.jobTitle}</h2>
             <p className="font-semibold italic">{experienceObject.date}</p>
             <p>{experienceObject.description}</p>
           </div>
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 lg:mt-0">
             {experienceObject.skills.map((skill, i) => {
               return (
                 <span
@@ -112,9 +114,10 @@ export const Experience = (): JSX.Element => {
       return (
         <div
           key={experienceObject.jobTitle}
-          className="container px-5 mt-24 grid grid-cols-1 md:grid-cols-2"
+          className="container px-5 mt-24 grid grid-cols-1 lg:grid-cols-2 min-h-[15vh]"
+          ref={(elem) => experienceRefs.current.push(elem)}
         >
-          {image}
+          <div className="flex items-center">{image}</div>
           {info}
         </div>
       );
@@ -127,6 +130,28 @@ export const Experience = (): JSX.Element => {
       { y: -100, opacity: 0 },
       { duration: 1.5, y: 0, opacity: 1 }
     );
+
+    experienceRefs.current.forEach((ref, i) => {
+      gsap.fromTo(
+        ref,
+        {
+          opacity: 0,
+          y: -50,
+        },
+        {
+          scrollTrigger: {
+            trigger: ref,
+            toggleActions: "restart none none none",
+            start: "200px 80%",
+            end: "50px 60%",
+            once: true,
+          },
+          opacity: 1,
+          y: 0,
+          duration: 2,
+        }
+      );
+    });
   }, []);
 
   return (
@@ -153,3 +178,5 @@ export const Experience = (): JSX.Element => {
     </div>
   );
 };
+
+export default Experience;

@@ -20,6 +20,9 @@ const Navbar = (): JSX.Element => {
               <Link to="/experience">Experience</Link>
             </li>
             <li className={liClassName}>
+              <Link to="/blog">Blog</Link>
+            </li>
+            <li className={liClassName}>
               <a
                 target="_blank"
                 href="https://github.com/banushi-a"

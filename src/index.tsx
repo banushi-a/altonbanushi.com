@@ -5,8 +5,9 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import Navbar from "./components/Navbar";
 import Projects from "./pages/Projects";
-import { Experience } from "./pages/Experience";
+import Experience from "./pages/Experience";
 import Home from "./pages/Home";
+import Blog from "./pages/Blog";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,6 +20,7 @@ root.render(
           <Route index element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/experience" element={<Experience />} />
+          <Route path="/blog" element={<Blog />} />
         </Route>
       </Routes>
     </Router>

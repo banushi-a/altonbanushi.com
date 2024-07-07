@@ -124,7 +124,7 @@ const Projects = (): JSX.Element => {
           scrollTrigger: {
             trigger: ref,
             toggleActions: "restart none none none",
-            start: "50px 80%",
+            start: "300px 80%",
             end: "50px 60%",
             once: true,
           },

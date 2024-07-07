@@ -57,6 +57,11 @@ const Sidebar = ({ className }: SidebarProps) => {
                 EXPERIENCE
               </Link>
             </h1>
+            <h1 className="text-3xl text-my-dark-blue font-sans font-bold pb-8">
+              <Link to="/blog" onClick={() => setShowSidebar(false)}>
+                BLOG
+              </Link>
+            </h1>
             {PAGES_AND_LINKS.map(({ page, link }, i) => {
               return (
                 <h1
