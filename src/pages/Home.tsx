@@ -16,10 +16,6 @@ const linkObjects: { link: string; name: string }[] = [
     link: "https://www.sandboxnu.com/",
     name: "Sandbox",
   },
-  {
-    link: "https://www.khoury.northeastern.edu/",
-    name: "Khoury College",
-  },
 ];
 
 const Home = (): JSX.Element => {
