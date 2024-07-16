@@ -148,7 +148,7 @@ const Projects = (): JSX.Element => {
       <div className="container mx-auto flex flex-col h-[85vh] items-center justify-between text-center">
         <div />
         <h2 ref={titleRef}>
-          <GradientText direction="t">My Projects</GradientText>
+          <GradientText className="bg-gradient-to-b">My Projects</GradientText>
         </h2>
         <img src={downArrow} alt="down arrow" className="h-10" />
       </div>

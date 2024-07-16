@@ -1,4 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
+
+import Logo from "../images/logo.png";
 import Sidebar from "./Sidebar";
 
 const liClassName =
@@ -9,7 +11,9 @@ const Navbar = (): JSX.Element => {
     <>
       <header className="flex items-center justify-between space-x-16 md:space-x-0 lg:space-x-0 min-w-100 h-24 bg-my-dark-blue px-10 py-2">
         <h1 className="font-bold text-2xl tracking-[0.2em] text-white">
-          <Link to="/">AB</Link>
+          <Link to="/">
+            <img src={Logo} alt="Logo" className="h-10" />
+          </Link>
         </h1>
         <nav className="text-[#b4c0d3] text-sm tracking-[0.125em] hidden sm:inline-block">
           <ul className="flex justify-around w-[35em]">

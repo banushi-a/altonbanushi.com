@@ -166,7 +166,9 @@ const Experience = (): JSX.Element => {
       <div className="flex flex-col h-[85vh] items-center justify-between mx-auto">
         <div />
         <h2 ref={titleRef}>
-          <GradientText direction="b">My Experience</GradientText>
+          <GradientText className="bg-gradient-to-t">
+            My Experience
+          </GradientText>
         </h2>
         <img src={downArrow} alt="down arrow" className="h-10" />
       </div>
