@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import GradientText from "../components/GradientText";
 
 const professionNouns = [
   "Developer.",
@@ -60,9 +61,7 @@ const Home = (): JSX.Element => {
           <h2 className="my-4 text-5xl font-bold font-mono leading-tight">
             {professionNoun}
           </h2>
-          <h1 className="text-[4rem] sm:text-[6rem] md:text-[9rem] mb-8 bg-gradient-to-r from-my-pink to-my-blue bg-clip-text text-transparent">
-            Alton Banushi
-          </h1>
+          <GradientText>Alton Banushi</GradientText>
           <div className="flex flex-wrap justify-center mx-auto lg:w-5/12">
             {linkObjects.map((linkObject) => {
               return (

@@ -7,6 +7,7 @@ import sandbox from "../images/sandbox-logo.png";
 import downArrow from "../images/icons/down-arrow.svg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import GradientText from "../components/GradientText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -163,12 +164,9 @@ const Experience = (): JSX.Element => {
       }}
     >
       <div className="flex flex-col h-[85vh] items-center justify-between mx-auto">
-        <div></div>
-        <h2
-          className="text-[4rem] md:text-[5rem] lg:text-[8rem] bg-gradient-to-b from-my-pink to-my-blue bg-clip-text text-transparent text-center"
-          ref={titleRef}
-        >
-          My Experience
+        <div />
+        <h2 ref={titleRef}>
+          <GradientText direction="b">My Experience</GradientText>
         </h2>
         <img src={downArrow} alt="down arrow" className="h-10" />
       </div>

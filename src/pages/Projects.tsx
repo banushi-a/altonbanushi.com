@@ -8,6 +8,7 @@ import downArrow from "../images/icons/down-arrow.svg";
 import { useLayoutEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import GradientText from "../components/GradientText";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -144,13 +145,10 @@ const Projects = (): JSX.Element => {
           "linear-gradient(190deg, rgb(28, 28, 65) 30%, rgb(7, 152, 249) 100%)",
       }}
     >
-      <div className="container mx-auto flex flex-col h-[85vh] items-center justify-between">
-        <div></div>
-        <h2
-          className="text-[4rem] md:text-[5rem] lg:text-[8rem] bg-gradient-to-t from-my-pink to-my-blue bg-clip-text text-transparent text-center"
-          ref={titleRef}
-        >
-          My Projects
+      <div className="container mx-auto flex flex-col h-[85vh] items-center justify-between text-center">
+        <div />
+        <h2 ref={titleRef}>
+          <GradientText direction="t">My Projects</GradientText>
         </h2>
         <img src={downArrow} alt="down arrow" className="h-10" />
       </div>
