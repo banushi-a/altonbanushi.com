@@ -63,9 +63,9 @@ const Blog = (): JSX.Element => {
       <div className="flex flex-col p-8 col-span-5 md:col-span-1 text-white border border-green-600">
         <div className="flex items-center h-14 gap-4">
           <img src={Logo} alt="Logo" className="h-12" />
-          <GradientText className="text-4xl sm:text-4xl md:text-4xl font-bold mb-0">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-my-pink to-my-blue bg-clip-text text-transparent">
             AB
-          </GradientText>
+          </h2>
         </div>
 
         <h2 className="font-semibold italic">
