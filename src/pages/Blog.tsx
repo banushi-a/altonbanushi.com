@@ -1,23 +1,26 @@
 import { useLayoutEffect, useRef } from "react";
-import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import Logo from "../images/logo.png";
+import GradientText from "../components/GradientText";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Blog = (): JSX.Element => {
-  const constructionRefs = useRef<any[]>([]);
+  const blogLinkRefs = useRef<any[]>([]);
 
-  const constructionComponents: JSX.Element[] = [
+  const blogLinks: JSX.Element[] = [
     <h2
       className="font-bold text-3xl text-white"
-      ref={(elem) => constructionRefs.current.push(elem)}
+      ref={(elem) => blogLinkRefs.current.push(elem)}
     >
       🚧 Page Under Construction 🚧
     </h2>,
     <h3
       className="font-bold text-2xl text-white hover:underline"
-      ref={(elem) => constructionRefs.current.push(elem)}
+      ref={(elem) => blogLinkRefs.current.push(elem)}
     >
       <Link to="/">Back Home</Link>
     </h3>,
@@ -25,7 +28,7 @@ const Blog = (): JSX.Element => {
 
   // gsap animations
   useLayoutEffect(() => {
-    constructionRefs.current.forEach((ref, i) => {
+    blogLinkRefs.current.forEach((ref, i) => {
       gsap.fromTo(
         ref,
         {
@@ -51,13 +54,28 @@ const Blog = (): JSX.Element => {
 
   return (
     <div
-      className="text-white bg-my-blue min-h-[91vh] flex flex-col justify-center items-center gap-4"
+      className="grid grid-cols-5"
       style={{
         background:
           "linear-gradient(190deg, rgb(28, 28, 65) 30%, rgb(7, 152, 249) 100%)",
       }}
     >
-      {constructionComponents}
+      <div className="flex flex-col p-8 col-span-5 md:col-span-1 text-white border border-green-600">
+        <div className="flex items-center h-14 gap-4">
+          <img src={Logo} alt="Logo" className="h-12" />
+          <GradientText className="text-4xl sm:text-4xl md:text-4xl font-bold mb-0">
+            AB
+          </GradientText>
+        </div>
+
+        <h2 className="font-semibold italic">
+          Exploring the place where comptuer science, mathematics, and
+          curiousity live
+        </h2>
+      </div>
+      <div className="text-white min-h-[95dvh] p-8 flex flex-col justify-start items-center gap-4 col-span-5 md:col-span-4 border border-red-300">
+        {blogLinks}
+      </div>
     </div>
   );
 };
