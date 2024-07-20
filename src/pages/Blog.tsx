@@ -3,7 +3,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import Logo from "../images/logo.png";
-import GradientText from "../components/GradientText";
 import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
