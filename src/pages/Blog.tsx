@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import BlogLink from "../components/BlogLink";
 import Logo from "../images/logo.png";
 import bookImage from "../images/blogImages/statsImage.png";
+import graphicsImage from "../images/blogImages/graphics.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,12 @@ const Blog = (): JSX.Element => {
       title="What are you going to do with math?"
       previewText="I’ve heard this question so, so many times. Be it from friends, family, or people I just introduced"
       image={bookImage}
+    />,
+    <BlogLink
+      href="https://medium.com/@altonbanushi/intersection-point-3d-computer-graphics-2bf88cac993c"
+      title="Intersection Point: 3D Computer Graphics"
+      previewText="It is hard for people not familiar with the field of computer graphics to recognize where exactly"
+      image={graphicsImage}
     />,
   ];
 
