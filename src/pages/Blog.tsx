@@ -5,6 +5,7 @@ import BlogLink from "../components/BlogLink";
 import Logo from "../images/logo.png";
 import bookImage from "../images/blogImages/statsImage.png";
 import graphicsImage from "../images/blogImages/graphics.png";
+import coopOffer from "../images/blogImages/coopOffer.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,6 +22,12 @@ const Blog = (): JSX.Element => {
       title="Intersection Point: 3D Computer Graphics"
       previewText="It is hard for people not familiar with the field of computer graphics to recognize where exactly"
       image={graphicsImage}
+    />,
+    <BlogLink
+      href="https://medium.com/@altonbanushi/leveraging-cs-math-in-the-co-op-search-acd443bc3797"
+      title="Leveraging CS + Math in the Co-op Search"
+      previewText="As a student at Northeastern University, navigating and making use of the co-op program is a cornerstone"
+      image={coopOffer}
     />,
   ];
 
