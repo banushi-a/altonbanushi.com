@@ -39,7 +39,7 @@ const Blog = (): JSX.Element => {
           "linear-gradient(190deg, rgb(28, 28, 65) 30%, rgb(7, 152, 249) 100%)",
       }}
     >
-      <div className="flex flex-col p-8 col-span-7 md:col-span-2 text-white border-b md:border-b-0 md:border-r border-white">
+      <div className="flex flex-col p-8 col-span-7 lg:col-span-2 text-white border-b lg:border-b-0 lg:border-r border-white">
         <div className="flex justify-end items-center h-14 gap-4">
           <h2 className="text-4xl font-bold bg-gradient-to-r from-my-pink to-my-blue bg-clip-text text-transparent">
             AB
@@ -51,7 +51,7 @@ const Blog = (): JSX.Element => {
           live
         </h2>
       </div>
-      <div className="text-white min-h-[95dvh] p-8 flex flex-col justify-start items-center gap-4 col-span-7 md:col-span-5">
+      <div className="text-white min-h-[95dvh] p-8 flex flex-col justify-start items-center gap-4 col-span-7 lg:col-span-5">
         {blogLinks}
       </div>
     </div>
