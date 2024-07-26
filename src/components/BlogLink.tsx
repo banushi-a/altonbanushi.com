@@ -21,7 +21,7 @@ const BlogLink = ({
       <a
         href={href}
         target={target}
-        className={`grid grid-cols-7 hover:outline hover:outline-white hover:rounded-2xl p-4 gap-4 ${className}`}
+        className={`grid grid-cols-7 hover:animate-pulse hover:outline hover:outline-white hover:rounded-2xl p-4 gap-4 ${className}`}
       >
         <div className="col-span-7 lg:col-span-5 pr-2 lg:pr-4">
           <h2 className="font-bold text-xl md:text-2xl lg:text-3xl">{title}</h2>

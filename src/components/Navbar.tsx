@@ -12,7 +12,7 @@ const Navbar = (): JSX.Element => {
       <header className="flex items-center justify-between space-x-16 md:space-x-0 lg:space-x-0 min-w-100 h-24 bg-my-dark-blue px-10 py-2">
         <h1 className="font-bold text-2xl tracking-[0.2em] text-white">
           <Link to="/">
-            <img src={Logo} alt="Logo" className="h-10" />
+            <img src={Logo} alt="Logo" className="h-10 hover:animate-pulse" />
           </Link>
         </h1>
         <nav className="text-[#b4c0d3] text-sm tracking-[0.125em] hidden sm:inline-block">
