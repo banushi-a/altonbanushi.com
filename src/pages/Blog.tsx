@@ -15,18 +15,21 @@ const Blog = (): JSX.Element => {
       href="https://medium.com/@altonbanushi/what-are-you-going-to-do-with-math-18df2ff067cd"
       title="What are you going to do with math?"
       previewText="I’ve heard this question so, so many times. Be it from friends, family, or people I just introduced"
+      date={new Date("July 20, 2024")}
       image={bookImage}
     />,
     <BlogLink
       href="https://medium.com/@altonbanushi/intersection-point-3d-computer-graphics-2bf88cac993c"
       title="Intersection Point: 3D Computer Graphics"
       previewText="It is hard for people not familiar with the field of computer graphics to recognize where exactly"
+      date={new Date("July 21, 2024")}
       image={graphicsImage}
     />,
     <BlogLink
       href="https://medium.com/@altonbanushi/leveraging-cs-math-in-the-co-op-search-acd443bc3797"
       title="Leveraging CS + Math in the Co-op Search"
       previewText="As a student at Northeastern University, navigating and making use of the co-op program is a cornerstone"
+      date={new Date("July 22, 2024")}
       image={coopOffer}
     />,
   ];
