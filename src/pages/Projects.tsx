@@ -20,6 +20,7 @@ const projectObjects = [
     description:
       "Worked to create a co-op review platform that enables Northeastern students to learn more about their co-op and reach out to previous employees. Developed the web application using the T3 stack alongside an agile team of developers, designers, and a project manager.",
     skills: ["React", "Next.js", "TypeScript", "Postgres"],
+    link: "https://github.com/sandboxnu/cooper",
   },
   {
     image: sga,
@@ -28,6 +29,7 @@ const projectObjects = [
     description:
       "Collaborated with designers, developers, and client to digitize the student government member tracking system. Implemented the front-end using React, Tailwind, and TypeScript and the back-end using Express.js, Typscript, and MySQL",
     skills: ["React", "Express", "MySQL"],
+    link: "https://github.com/sandboxnu/sga-tooling",
   },
   {
     image: reflective,
@@ -36,6 +38,7 @@ const projectObjects = [
     description:
       "Developed a graphics application that allows users to input mathematical functions and visualize their reflective properties in an enviornment. Users can manage up to 10 functions at once, view their wireframe meshes, display the normals, and invert the direction that the reflections are coming from.",
     skills: ["OpenGL", "C++", "GLM"],
+    link: "https://github.com/banushi-a/reflective-functions",
   },
   {
     image: maze,
@@ -90,17 +93,32 @@ const Projects = (): JSX.Element => {
           <div className="flex flex-wrap justify-center mx-auto">
             {projectObject.skills.map((skill) => {
               return (
-                <button className="my-2 mx-2 bg-white text-gray-800 font-bold rounded-full py-3 px-5">
+                <div className="my-2 mx-2 bg-white text-gray-800 font-bold rounded-full py-3 px-5">
                   {skill}
-                </button>
+                </div>
               );
             })}
           </div>
-          <img
-            src={projectObject.image}
-            alt={`${projectObject.name} + Project`}
-            className="w-10/12 md:w-7/12 mt-2 rounded-2xl"
-          />
+          {projectObject.link ? (
+            <a
+              href={projectObject.link}
+              target="_blank"
+              rel="noreferrer"
+              className="w-10/12 md:w-7/12 mt-2 rounded-2xl p-4 hover:transition-all hover:outline hover:outline-white"
+            >
+              <img
+                src={projectObject.image}
+                alt={`${projectObject.name} + Project`}
+                className="rounded-2xl"
+              />
+            </a>
+          ) : (
+            <img
+              src={projectObject.image}
+              alt={`${projectObject.name} + Project`}
+              className="w-10/12 md:w-7/12 mt-2 rounded-2xl"
+            />
+          )}
         </div>
       );
     }
