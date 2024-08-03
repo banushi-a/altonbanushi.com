@@ -25,11 +25,11 @@ const experienceObjects: experienceObject[] = [
   {
     image: nomura,
     company: "Nomura Holdings",
-    jobTitle: "Risk Management Co-op",
+    jobTitle: "Risk Analyst Co-op",
     description:
-      "Incoming Risk Management [Model Validation] Co-op at Nomura at the New York City office",
+      "Incoming Risk Analyst [Risk Methedology Group] at Nomura at the New York City office",
     date: "Aug 2024 - Dec 2024",
-    skills: ["Statistics", "Python"],
+    skills: ["Statistics", "Python", "Big Data"],
     extraImgStyles: "pl-2",
   },
   {
@@ -39,7 +39,7 @@ const experienceObjects: experienceObject[] = [
     description:
       "Develop software solutions for corporate investment banking operations in an agile enviornment",
     date: "Jun 2024 - Aug 2024",
-    skills: ["Software Development"],
+    skills: ["Software Development", "Full Stack"],
     extraImgStyles: "p-8",
   },
   {
