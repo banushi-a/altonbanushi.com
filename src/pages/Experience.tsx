@@ -29,7 +29,7 @@ const experienceObjects: experienceObject[] = [
     description:
       "Incoming Risk Analyst [Risk Methedology Group] at Nomura at the New York City office",
     date: "Aug 2024 - Dec 2024",
-    skills: ["Statistics", "Python", "Big Data"],
+    skills: ["Statistics", "Python", "Big Data", "Machine Learning"],
     extraImgStyles: "pl-2",
   },
   {
