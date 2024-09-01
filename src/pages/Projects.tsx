@@ -37,7 +37,7 @@ const projectObjects = [
     name: "Reflective Function Visualizer",
     summary: "OpenGL Project",
     description:
-      "Developed a graphics application that allows users to input mathematical functions and visualize their reflective properties in an enviornment. Users can manage up to 10 functions at once, view their wireframe meshes, display the normals, and invert the direction that the reflections are coming from.",
+      "Developed a graphics application that allows users to input mathematical functions and visualize their reflective properties in an environment. Users can manage up to 10 functions at once, view their wireframe meshes, display the normals, and invert the direction that the reflections are coming from.",
     skills: ["OpenGL", "C++", "GLM"],
     link: "https://github.com/banushi-a/reflective-functions",
   },
