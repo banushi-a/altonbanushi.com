@@ -27,7 +27,7 @@ const experienceObjects: experienceObject[] = [
     company: "Nomura Holdings",
     jobTitle: "Risk Analyst Co-op",
     description:
-      "Incoming Risk Analyst [Risk Methedology Group] at Nomura at the New York City office",
+      "Research and implement risk management methedologies while collaborating with colleagues and stakeholders",
     date: "Aug 2024 - Dec 2024",
     skills: ["Statistics", "Python", "Big Data", "Machine Learning"],
     extraImgStyles: "pl-2",
