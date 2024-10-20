@@ -30,6 +30,12 @@ const Project = ({
       </h3>
       <h2 className="text-white tracking-[0.125em] font-bold text-3xl text-center pt-2">
         {projectObject.name}
+        {projectObject.link && (
+          <a href={projectObject.link} target="_blank" rel="noreferrer">
+            {" "}
+            🔗
+          </a>
+        )}
       </h2>
       <center className="w-11/12 md:w-7/12 pt-3 leading-7">
         {projectObject.description}
