@@ -51,7 +51,7 @@ const Home = (): JSX.Element => {
 
   return (
     <div
-      className="h-screen text-white"
+      className="h-[90vh] text-white"
       style={{
         background:
           "linear-gradient(180deg, rgb(28, 28, 65) 32%, rgb(7, 152, 249) 100%)",
