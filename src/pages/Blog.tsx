@@ -2,7 +2,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import BlogLink from "../components/BlogLink";
-import Logo from "../images/logo.png";
+import Logo from "../images/logoGreen.png";
 import bookImage from "../images/blogImages/statsImage.png";
 import graphicsImage from "../images/blogImages/graphics.png";
 import coopOffer from "../images/blogImages/coopOffer.jpg";
@@ -44,7 +44,7 @@ const Blog = (): JSX.Element => {
     >
       <div className="flex flex-col p-8 col-span-7 lg:col-span-2 text-white border-b lg:border-b-0 lg:border-r border-white">
         <div className="flex justify-end items-center h-14 gap-4">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-my-pink to-my-blue bg-clip-text text-transparent">
+          <h2 className="text-4xl font-bold bg-gradient-to-r from-my-teal to-my-green bg-clip-text text-transparent">
             AB
           </h2>
           <img src={Logo} alt="Logo" className="h-12" />

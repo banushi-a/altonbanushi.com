@@ -79,7 +79,7 @@ const Experience = (): JSX.Element => {
   const experienceComponents: JSX.Element[] = experienceObjects.map(
     (experienceObject) => {
       const image = (
-        <div className="rounded-2xl lg:w-[40vw] bg-gradient-to-r from-my-dark-blue via-my-blue to-my-pink p-1 mb-4 lg:mb-0">
+        <div className="rounded-2xl lg:w-[40vw] bg-gradient-to-r from-my-teal via-my-green to-my-dark-green p-1 mb-4 lg:mb-0">
           <img
             src={experienceObject.image}
             alt={experienceObject.company + " Company Image"}

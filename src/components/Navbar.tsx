@@ -1,10 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
 
-import Logo from "../images/logo.png";
+import Logo from "../images/logoGreen.png";
 import Sidebar from "./Sidebar";
 
 const liClassName =
-  "hover:text-white active:text-[#e13ee5] hover:text-md transition duration-300 ease-in-out";
+  "hover:text-white active:text-my-dark-green hover:text-md transition duration-300 ease-in-out";
 
 const Navbar = (): JSX.Element => {
   return (
