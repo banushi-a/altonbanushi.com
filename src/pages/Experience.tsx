@@ -48,7 +48,7 @@ const experienceObjects: experienceObject[] = [
     jobTitle: "Quantitative Developer Co-op",
     description:
       "Work to develop in-house software to implement investment strategies, visualize data, and optimize portfolios",
-    date: "Dec 2022 - August 2023",
+    date: "January 2023 - July 2023",
     skills: ["MIP", "Linear Algebra", "Full Stack"],
     extraImgStyles: "p-8",
   },
