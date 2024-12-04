@@ -6,7 +6,7 @@ const professionNouns = [
   "Student.",
   "Mathematician.",
   "Researcher.",
-  "Mentor",
+  "Mentor.",
 ] as const;
 
 const linkObjects: { link: string; name: string }[] = [
