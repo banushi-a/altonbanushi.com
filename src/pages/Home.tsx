@@ -33,10 +33,17 @@ const Home = (): JSX.Element => {
   return (
     <>
       <section
-        className="w-screen h-screen flex flex-col items-center justify-center"
+        className="w-screen h-screen flex flex-col items-center justify-around font-serif"
         style={interpolateStyles(x, width)}
       >
-        <h1 className="">Alton Banushi</h1>
+        <div className="text-center flex flex-col items-center justify-center w-[90dvw]">
+          <h1 className="font-abril text-8xl lg:text-9xl">Alton Banushi</h1>
+          <div className="text-2xl italic flex w-full justify-around">
+            <p>student.</p>
+            <p>developer.</p>
+            <p>mathematician.</p>
+          </div>
+        </div>
       </section>
     </>
   );
