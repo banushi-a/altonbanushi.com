@@ -1,86 +1,51 @@
-import { useEffect, useState } from "react";
-import GradientText from "../components/GradientText";
-
-const professionNouns = [
-  "Developer.",
-  "Student.",
-  "Mathematician.",
-  "Researcher.",
-  "Mentor.",
-] as const;
-
-const linkObjects: { link: string; name: string }[] = [
-  {
-    link: "https://www.linkedin.com/in/alton-banushi/",
-    name: "LinkedIn",
-  },
-  {
-    link: "https://www.sandboxnu.com/",
-    name: "Sandbox",
-  },
-];
+import useMousePosition from "../hooks/useMousePosition";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Home = (): JSX.Element => {
-  const [professionNoun, setProfessionNoun] = useState<string>(
-    professionNouns[0][0]
-  );
-  const [currProfessionNoun, setCurrProfessionNoun] = useState<number>(0);
+  const interpolateStyles = (x: number | null, width: number) => {
+    // let b = (x ? x / width : 0) * 360;
+    let b = (new Date().getTime() / 1000) % 120;
 
-  // Use Effect to Update the Current Word
-  useEffect(() => {
-    const updateWord = async () => {
-      if (professionNouns[currProfessionNoun] === professionNoun) {
-        setTimeout(() => {
-          const nextIdx = (currProfessionNoun + 1) % professionNouns.length;
-          setProfessionNoun(professionNouns[nextIdx].slice(0, 1));
-          setCurrProfessionNoun(nextIdx);
-        }, 3000);
-      } else {
-        setTimeout(() => {
-          setProfessionNoun(
-            professionNouns[currProfessionNoun].slice(
-              0,
-              professionNoun.length + 1
-            )
-          );
-        }, 200 * Math.random());
-      }
+    console.log(b);
+
+    return {
+      backgroundImage: `radial-gradient(at 22% 31%, hsla(${
+        (195 + b) % 360
+      },100%,62%,1) 0px, transparent 50%),\nradial-gradient(at 99% 51%, hsla(${
+        (99 + b) % 360
+      },100%,75%,1) 0px, transparent 50%),\nradial-gradient(at 86% 53%, hsla(${
+        (261 + b) % 360
+      },100%,67%,1) 0px, transparent 50%),\nradial-gradient(at 85% 33%, hsla(${
+        (278 + b) % 360
+      },100%,71%,1) 0px, transparent 50%),\nradial-gradient(at 36% 70%, hsla(${
+        (75 + b) % 360
+      },100%,61%,1) 0px, transparent 50%),\nradial-gradient(at 73% 72%, hsla(${
+        (236 + b) % 360
+      },100%,78%,1) 0px, transparent 50%),\nradial-gradient(at 59% 50%, hsla(${
+        (327 + b) % 360
+      },89%,47%,1) 0px, transparent 50%)`,
     };
-    updateWord();
-  }, [professionNoun, currProfessionNoun]);
+  };
+
+  const { width } = useWindowDimensions();
+  const { x } = useMousePosition();
 
   return (
-    <div
-      className="h-[90vh] text-white"
-      style={{
-        background:
-          "linear-gradient(180deg, rgb(28, 28, 65) 32%, rgb(7, 152, 249) 100%)",
-      }}
-    >
-      <div className="container h-[70vh] mx-auto flex flex-col py-24 items-center justify-center">
-        <div className="text-center lg:w-10/12 w-full">
-          <h2 className="my-4 text-5xl font-bold font-mono leading-tight">
-            {professionNoun}
-          </h2>
-          <GradientText>Alton Banushi</GradientText>
-          <div className="flex flex-wrap justify-center mx-auto lg:w-5/12">
-            {linkObjects.map((linkObject) => {
-              return (
-                <button className="my-2 mx-2 hover:underline bg-white text-gray-800 font-bold rounded-full py-4 px-8">
-                  <a
-                    href={linkObject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {linkObject.name}
-                  </a>
-                </button>
-              );
-            })}
+    <>
+      <section
+        className="w-screen h-screen flex flex-col items-center justify-around font-serif"
+        style={interpolateStyles(x, width)}
+      >
+        <div className="text-center flex flex-col items-center justify-center w-[90dvw] gap-8">
+          <h1 className="font-abril text-8xl lg:text-9xl">Alton Banushi</h1>
+          <div className="text-2xl italic flex w-full justify-around">
+            <p>student.</p>
+            <p>developer.</p>
+            <p>mathematician.</p>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 };
 
