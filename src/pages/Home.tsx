@@ -2,6 +2,9 @@ import useMousePosition from "../hooks/useMousePosition";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Home = (): JSX.Element => {
+  alert(
+    "🚧I'm currently redesigning my website.🚧\nCheck Me out on Linkedin at https://www.linkedin.com/in/alton-banushi/ in the meantime."
+  );
   const interpolateStyles = (x: number | null, width: number) => {
     // let b = (x ? x / width : 0) * 360;
     let b = (new Date().getTime() / 1000) % 120;
