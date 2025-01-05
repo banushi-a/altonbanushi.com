@@ -34,7 +34,14 @@ const Home = (): JSX.Element => {
         style={interpolateStyles(x, width)}
       >
         <div className="text-center flex flex-col items-center justify-center w-[90dvw] gap-8">
-          <h1 className="font-abril text-8xl lg:text-9xl">alton banushi</h1>
+          <a
+            target="_blank"
+            href="https://www.linkedin.com/in/alton-banushi/"
+            className="hover:italic"
+            rel="noreferrer"
+          >
+            <h1 className="font-abril text-8xl lg:text-9xl">alton banushi</h1>
+          </a>
           <div className="text-2xl italic flex w-full justify-around">
             <p>student.</p>
             <p>developer.</p>
