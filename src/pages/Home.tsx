@@ -1,3 +1,5 @@
+import Header from "../components/Header";
+import Hero from "../components/Hero";
 import useMousePosition from "../hooks/useMousePosition";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
@@ -29,25 +31,12 @@ const Home = (): JSX.Element => {
 
   return (
     <>
+      <Header />
       <section
         className="w-screen h-screen flex flex-col items-center justify-around font-serif"
         style={interpolateStyles(x, width)}
       >
-        <div className="text-center flex flex-col items-center justify-center w-[90dvw] gap-8">
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/alton-banushi/"
-            className="hover:italic"
-            rel="noreferrer"
-          >
-            <h1 className="font-abril text-8xl lg:text-9xl">alton banushi</h1>
-          </a>
-          <div className="text-2xl italic flex w-full justify-around">
-            <p>student.</p>
-            <p>developer.</p>
-            <p>mathematician.</p>
-          </div>
-        </div>
+        <Hero />
       </section>
     </>
   );
