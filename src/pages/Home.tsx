@@ -2,14 +2,8 @@ import useMousePosition from "../hooks/useMousePosition";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 
 const Home = (): JSX.Element => {
-  alert(
-    "🚧I'm currently redesigning my website.🚧\nCheck Me out on Linkedin at https://www.linkedin.com/in/alton-banushi/ in the meantime."
-  );
   const interpolateStyles = (x: number | null, width: number) => {
-    // let b = (x ? x / width : 0) * 360;
-    let b = (new Date().getTime() / 1000) % 120;
-
-    console.log(b);
+    let b = ((x ? x / width : 0) * 360) / 3;
 
     return {
       backgroundImage: `radial-gradient(at 22% 31%, hsla(${
@@ -40,7 +34,7 @@ const Home = (): JSX.Element => {
         style={interpolateStyles(x, width)}
       >
         <div className="text-center flex flex-col items-center justify-center w-[90dvw] gap-8">
-          <h1 className="font-abril text-8xl lg:text-9xl">Alton Banushi</h1>
+          <h1 className="font-abril text-8xl lg:text-9xl">alton banushi</h1>
           <div className="text-2xl italic flex w-full justify-around">
             <p>student.</p>
             <p>developer.</p>
