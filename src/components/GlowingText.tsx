@@ -1,12 +1,14 @@
+type GlowingTextProps = {
+  text?: string;
+  size?: "H1" | "H2";
+  href: any;
+};
+
 const GlowingText = ({
   text,
   size = "H1",
   href,
-}: {
-  text: string;
-  size?: "H1" | "H2";
-  href: string;
-}): JSX.Element => {
+}: GlowingTextProps): JSX.Element => {
   let sizeStyle = "text-8xl lg:text-9xl font-abril";
   if (size === "H2") sizeStyle = "text-xl lg:text-2xl font-sans";
 
