@@ -3,6 +3,7 @@ import Hero from "../sections/Hero";
 import useMousePosition from "../hooks/useMousePosition";
 import useWindowDimensions from "../hooks/useWindowDimensions";
 import AboutMe from "../sections/Experience";
+import Footer from "../components/Footer";
 
 const Home = (): JSX.Element => {
   /**
@@ -81,7 +82,7 @@ const Home = (): JSX.Element => {
 
   return (
     <div
-      className="overflow-clip"
+      className="overflow-clip backdrop-blue-md"
       style={interpolateStyles(x, y, width, height)}
     >
       <Header />
@@ -89,6 +90,7 @@ const Home = (): JSX.Element => {
         <Hero />
       </section>
       <AboutMe />
+      <Footer />
     </div>
   );
 };
