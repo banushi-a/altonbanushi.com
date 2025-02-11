@@ -1,7 +1,8 @@
 import Header from "../components/Header";
-import Hero from "../components/Hero";
+import Hero from "../sections/Hero";
 import useMousePosition from "../hooks/useMousePosition";
 import useWindowDimensions from "../hooks/useWindowDimensions";
+import AboutMe from "../sections/Experience";
 
 const Home = (): JSX.Element => {
   /**
@@ -79,15 +80,16 @@ const Home = (): JSX.Element => {
   const { x, y } = useMousePosition();
 
   return (
-    <>
+    <div
+      className="overflow-clip"
+      style={interpolateStyles(x, y, width, height)}
+    >
       <Header />
-      <section
-        className="w-screen h-screen flex flex-col items-center justify-around font-serif"
-        style={interpolateStyles(x, y, width, height)}
-      >
+      <section className="w-screen min-h-screen flex flex-col items-center justify-around font-serif z-10">
         <Hero />
       </section>
-    </>
+      <AboutMe />
+    </div>
   );
 };
 

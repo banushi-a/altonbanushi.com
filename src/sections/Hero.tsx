@@ -1,4 +1,4 @@
-import GlowingText from "./GlowingText";
+import GlowingText from "../components/GlowingText";
 
 const Hero = (): JSX.Element => {
   return (
