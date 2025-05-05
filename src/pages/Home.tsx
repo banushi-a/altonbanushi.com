@@ -4,42 +4,11 @@ import Hero from "../sections/Hero";
 import AboutMe from "../sections/Experience";
 import Footer from "../components/Footer";
 import Blob from "../components/Blob";
-
-const generateBlobPositions = (count: number, minDistance: number) => {
-  const positions: { top: number; left: number }[] = [];
-
-  const isTooClose = (x1: number, y1: number, x2: number, y2: number) => {
-    const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-    return distance < minDistance;
-  };
-
-  for (let i = 0; i < count; i++) {
-    let top: number, left: number;
-    let isValidPosition = false;
-
-    while (!isValidPosition) {
-      top = Math.random() * 80 + 10; // Random top position between 10% and 90%
-      left = Math.random() * 80 + 10; // Random left position between 10% and 90%
-
-      const currentLeft = left;
-      const currentTop = top;
-      isValidPosition = positions.every(
-        (pos) => !isTooClose(pos.left, pos.top, currentLeft, currentTop)
-      );
-
-      if (isValidPosition) {
-        positions.push({ top, left });
-      }
-    }
-  }
-
-  return positions;
-};
+import { positions as predefinedPositions } from "../constants/blobPositions";
 
 const Home = (): JSX.Element => {
-  const [blobPositions, setBlobPositions] = useState(
-    generateBlobPositions(10, 20)
-  );
+  const [, setCurrentIndex] = useState(0);
+  const [blobPositions, setBlobPositions] = useState(predefinedPositions[0]);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -53,11 +22,15 @@ const Home = (): JSX.Element => {
         const distance = Math.sqrt(
           (clientX - blobX) ** 2 + (clientY - blobY) ** 2
         );
-        return distance < 0.1 * Math.min(windowWidth, windowHeight); // 10% of the smaller screen dimension
+        return distance < 0.1 * Math.min(windowWidth, windowHeight);
       });
 
       if (isMouseNearBlob) {
-        setBlobPositions(generateBlobPositions(5, 20)); // Regenerate positions
+        setCurrentIndex((prevIndex) => {
+          const nextIndex = (prevIndex + 1) % predefinedPositions.length;
+          setBlobPositions(predefinedPositions[nextIndex]);
+          return nextIndex;
+        });
       }
     };
 
