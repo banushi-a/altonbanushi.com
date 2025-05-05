@@ -12,7 +12,7 @@ interface TimelineItemProps {
 
 const TimelineItem = ({ item, index }: TimelineItemProps) => {
   const hoverGlowClass =
-    "hover:bg-slate-400/30 hover:text-white hover:bg-black hover:shadow-[0_0_20px_5px_rgba(255,182,193,0.7),0_0_30px_10px_rgba(135,206,235,0.7)] hover:outline-white outline outline-black";
+    "hover:text-white hover:bg-black hover:shadow-[0_0_20px_5px_rgba(255,182,193,0.7),0_0_30px_10px_rgba(135,206,235,0.7)] hover:outline-white outline outline-black";
 
   return (
     <div className="my-12">
