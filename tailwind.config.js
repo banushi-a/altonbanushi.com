@@ -6,12 +6,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "my-dark-blue": "#1c1c41",
-        "my-pink": "#e13ee5",
-        "my-blue": "#0798f9",
         "my-green": "#41ff11",
-        "my-dark-green": "#00b362",
-        "my-teal": "#3d7fff",
+        "my-teal": "#3ca6b9",
       },
       fontFamily: {
         sans: ["Lato", "sans-serif"],

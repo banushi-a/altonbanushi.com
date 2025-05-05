@@ -1,94 +1,89 @@
+import { useState, useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../sections/Hero";
-import useMousePosition from "../hooks/useMousePosition";
-import useWindowDimensions from "../hooks/useWindowDimensions";
 import AboutMe from "../sections/Experience";
 import Footer from "../components/Footer";
+import Blob from "../components/Blob";
 
-const Home = (): JSX.Element => {
-  /**
-   * Returns the (x, y) position of a particle moving in a circle with random noise,
-   * clamped to the [0, 100] percentage range.
-   *
-   * @param centerX - The x-coordinate of the center (in percent, 0 to 100)
-   * @param centerY - The y-coordinate of the center (in percent, 0 to 100)
-   * @param radius - The radius of the circular path (in percent)
-   * @param t - The parameter (in radians) determining the position on the circle
-   * @param noiseAmplitude - The maximum deviation due to noise (default is 5)
-   * @returns An object with x and y properties, each between 0 and 100.
-   */
-  function getParticlePosition(
-    centerX: number,
-    centerY: number,
-    radius: number,
-    t: number,
-    noiseAmplitude: number = 1
-  ): string {
-    // Compute the ideal circular motion position.
-    let x = centerX + radius * Math.cos(t);
-    let y = centerY + radius * Math.sin(t);
+const generateBlobPositions = (count: number, minDistance: number) => {
+  const positions: { top: number; left: number }[] = [];
 
-    x += (Math.random() - 0.5) * noiseAmplitude;
-    y += (Math.random() - 0.5) * noiseAmplitude;
-
-    // Clamp the values between 0 and 100.
-    x = Math.max(0, Math.min(100, x));
-    y = Math.max(0, Math.min(100, y));
-
-    return `${x.toFixed(2)}% ${y.toFixed(2)}%`;
-  }
-
-  const interpolateStyles = (
-    x: number | null,
-    y: number | null,
-    width: number,
-    height: number
-  ) => {
-    x = x || 0;
-    y = y || 0;
-    let b = ((x ? x / width : 0) * 360) / 3;
-    x = (x / width) * 2 * Math.PI;
-    y = (y / height) * 2 * Math.PI;
-
-    const posn1 = getParticlePosition(22, 31, 10, x + y);
-    const posn2 = getParticlePosition(99, 51, 15, y + y);
-    const posn3 = getParticlePosition(86, 53, 13, x - x);
-    const posn4 = getParticlePosition(85, 33, 20, y + x);
-    const posn5 = getParticlePosition(36, 70, 10, x + x - y);
-    const posn6 = getParticlePosition(73, 72, 10, y - x);
-    const posn7 = getParticlePosition(59, 50, 10, x - y);
-
-    return {
-      backgroundImage: `radial-gradient(at ${posn1}, hsla(${
-        (195 + b) % 360
-      },100%,62%,1) 0px, transparent 50%),\nradial-gradient(at ${posn2}, hsla(${
-        (99 + b) % 360
-      },100%,75%,1) 0px, transparent 50%),\nradial-gradient(at ${posn3}, hsla(${
-        (261 + b) % 360
-      },100%,67%,1) 0px, transparent 50%),\nradial-gradient(at ${posn4}, hsla(${
-        (278 + b) % 360
-      },100%,71%,1) 0px, transparent 50%),\nradial-gradient(at ${posn5}, hsla(${
-        (75 + b) % 360
-      },100%,61%,1) 0px, transparent 50%),\nradial-gradient(at ${posn6}, hsla(${
-        (236 + b) % 360
-      },100%,78%,1) 0px, transparent 50%),\nradial-gradient(at ${posn7}, hsla(${
-        (327 + b) % 360
-      },89%,47%,1) 0px, transparent 50%)`,
-    };
+  const isTooClose = (x1: number, y1: number, x2: number, y2: number) => {
+    const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+    return distance < minDistance;
   };
 
-  const { width, height } = useWindowDimensions();
-  const { x, y } = useMousePosition();
+  for (let i = 0; i < count; i++) {
+    let top: number, left: number;
+    let isValidPosition = false;
+
+    while (!isValidPosition) {
+      top = Math.random() * 80 + 10; // Random top position between 10% and 90%
+      left = Math.random() * 80 + 10; // Random left position between 10% and 90%
+
+      const currentLeft = left;
+      const currentTop = top;
+      isValidPosition = positions.every(
+        (pos) => !isTooClose(pos.left, pos.top, currentLeft, currentTop)
+      );
+
+      if (isValidPosition) {
+        positions.push({ top, left });
+      }
+    }
+  }
+
+  return positions;
+};
+
+const Home = (): JSX.Element => {
+  const [blobPositions, setBlobPositions] = useState(
+    generateBlobPositions(10, 20)
+  );
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const { clientX, clientY } = event;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      const isMouseNearBlob = blobPositions.some((pos) => {
+        const blobX = (pos.left / 100) * windowWidth;
+        const blobY = (pos.top / 100) * windowHeight;
+        const distance = Math.sqrt(
+          (clientX - blobX) ** 2 + (clientY - blobY) ** 2
+        );
+        return distance < 0.1 * Math.min(windowWidth, windowHeight); // 10% of the smaller screen dimension
+      });
+
+      if (isMouseNearBlob) {
+        setBlobPositions(generateBlobPositions(5, 20)); // Regenerate positions
+      }
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, [blobPositions]);
 
   return (
-    <div
-      className="overflow-clip backdrop-blue-md"
-      style={interpolateStyles(x, y, width, height)}
-    >
+    <div className="overflow-clip bg-my-blue relative">
       <Header />
-      <section className="w-screen min-h-screen flex flex-col items-center justify-around font-serif z-10">
+      <section className="w-screen min-h-screen flex flex-col items-center justify-around font-serif">
         <Hero />
       </section>
+      {blobPositions.map((pos, index) => (
+        <Blob
+          key={index}
+          className="absolute z-0 transition-all duration-500"
+          myStyle={{
+            top: `${pos.top}%`,
+            left: `${pos.left}%`,
+          }}
+        />
+      ))}
       <AboutMe />
       <Footer />
     </div>

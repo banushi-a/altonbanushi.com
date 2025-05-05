@@ -5,18 +5,18 @@ import TimelineItem, {
 
 const timelineItems: TimelineItemData[] = [
   {
-    title: "Teaching Assistant",
-    company: "Khoury College",
-    time: "2022 - 2025",
+    title: "Software Developer",
+    company: "Epic",
+    time: "2025 - now",
     description:
-      "CS 3000 (Algorithms and Data) and CS2500 (Fundamentals of Computer Science)",
+      "Deliver healthcare software solutions for 325 million patients worldwide",
   },
   {
-    title: "Quantitative Developer Co-op",
-    company: "UBS",
-    time: "2023",
+    title: "Quantiative Risk Developer Co-op",
+    company: "Nomura",
+    time: "2024",
     description:
-      "Researched and implemented strategies for Fixed Income Emerging Markets (passive) team",
+      "Researched predictive statistical models for multiple compliance mandates",
   },
   {
     title: "Software Engineering Intern",
@@ -26,11 +26,18 @@ const timelineItems: TimelineItemData[] = [
       "Developed and maintained software for automating wholesale deal processes",
   },
   {
-    title: "Quantiative Risk Developer Co-op",
-    company: "Nomura",
-    time: "2024",
+    title: "Quantitative Developer Co-op",
+    company: "UBS",
+    time: "2023",
     description:
-      "Researched predictive statistical models for multiple compliance mandates",
+      "Researched and implemented strategies for Fixed Income Emerging Markets (passive) team",
+  },
+  {
+    title: "Teaching Assistant",
+    company: "Khoury College",
+    time: "2022 - 2025",
+    description:
+      "CS 3000 (Algorithms and Data) and CS2500 (Fundamentals of Computer Science)",
   },
 ];
 
