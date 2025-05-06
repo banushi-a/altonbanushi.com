@@ -3,50 +3,32 @@ import Blob from "./Blob";
 import { positions as predefinedPositions } from "../constants/blobPositions";
 
 const BlobContainer = () => {
-  const [, setCurrentIndex] = useState(0);
-  const [blobPositions, setBlobPositions] = useState(predefinedPositions[0]);
+  const [blobPositions, setBlobPositions] = useState(
+    predefinedPositions[Math.floor(Math.random() * predefinedPositions.length)]
+  );
 
   useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      const { clientX, clientY } = event;
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
-
-      const isMouseNearBlob = blobPositions.some((pos) => {
-        const blobX = (pos.left / 100) * windowWidth;
-        const blobY = (pos.top / 100) * windowHeight;
-        const distance = Math.sqrt(
-          (clientX - blobX) ** 2 + (clientY - blobY) ** 2
+    const interval = setInterval(() => {
+      // After the shrinking animation, update positions and reset transition
+      setTimeout(() => {
+        const nextIndex = Math.floor(
+          Math.random() * predefinedPositions.length
         );
-        return distance < 0.1 * Math.min(windowWidth, windowHeight);
-      });
+        setBlobPositions(predefinedPositions[nextIndex]);
+      }, 2500); // Match this duration to the shrinking animation duration
+    }, Math.random() * 5000 + 5000); // Random interval between 5-10 seconds
 
-      if (isMouseNearBlob) {
-        setCurrentIndex((prevIndex) => {
-          const nextIndex = (prevIndex + 1) % predefinedPositions.length;
-          setBlobPositions(predefinedPositions[nextIndex]);
-          return nextIndex;
-        });
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, [blobPositions]);
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
 
   return (
     <>
       {blobPositions.map((pos, index) => (
         <Blob
           key={index}
-          className="absolute z-0 transition-all duration-500"
-          myStyle={{
-            top: `${pos.top}%`,
-            left: `${pos.left}%`,
-          }}
+          top={pos.top}
+          left={pos.left}
+          className={`absolute z-0 scale-100 duration-[2500ms]`}
         />
       ))}
     </>

@@ -1,7 +1,4 @@
-interface BlobProps {
-  className?: string;
-  myStyle?: any;
-}
+import { useMemo } from "react";
 
 const radiusOptions = [
   "68% 32% 70% 30% / 36% 60% 40% 64% ",
@@ -12,7 +9,6 @@ const radiusOptions = [
 ];
 
 const gradientOptions = [
-  // Blue Purple Pink
   "bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500",
   "bg-gradient-to-l from-blue-500 via-purple-500 to-pink-500",
   "bg-gradient-to-t from-blue-500 via-purple-500 to-pink-500",
@@ -21,41 +17,47 @@ const gradientOptions = [
   "bg-gradient-to-tl from-blue-500 via-purple-500 to-pink-500",
   "bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500",
   "bg-gradient-to-bl from-blue-500 via-purple-500 to-pink-500",
-  "bg-radial from-blue-500 via-purple-500 to-pink-500",
-  "bg-radial from-pink-500 via-purple-500 to-blue-500",
-  // Blue Teal Green
-  "bg-gradient-to-r from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-l from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-t from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-b from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-tr from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-tl from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-br from-blue-500 via-my-teal to-my-green",
-  "bg-gradient-to-bl from-blue-500 via-my-teal to-my-green",
-  "bg-radial from-blue-500 via-my-teal to-my-green",
-  "bg-radial from-my-green via-my-teal to-blue-500",
 ];
 
-const Blob = ({ className, myStyle }: BlobProps) => {
-  const randomIdx: number = Math.floor(Math.random() * gradientOptions.length);
+interface BlobProps {
+  top: number;
+  left: number;
+  className?: string;
+}
 
-  myStyle["borderRadius"] = radiusOptions.at(
-    randomIdx % (radiusOptions.length - 1)
+const Blob = ({ top, left, className }: BlobProps) => {
+  const randomIdx: number = useMemo(
+    () => Math.floor(Math.random() * gradientOptions.length),
+    []
   );
+
+  // Generate random scaling values for this blob
+  const scaleStart = useMemo(() => Math.random() * 0.5 + 0.5, []);
+  const scaleEnd = useMemo(() => Math.random() + 0.5, []);
+  const animationDuration = useMemo(() => `${Math.random() * 5 + 3}s`, []);
 
   return (
     <div
-      className={`w-52 h-52 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 hover:scale-110 ${className} ${gradientOptions.at(
-        randomIdx % (gradientOptions.length - 1)
+      className={`w-52 h-52 animate-grow-shrink ${className} ${gradientOptions.at(
+        randomIdx
       )}`}
-      style={myStyle}
+      style={
+        {
+          borderRadius: radiusOptions.at(randomIdx % radiusOptions.length),
+          top: `${top}%`,
+          left: `${left}%`,
+          "--scale-start": scaleStart,
+          "--scale-end": scaleEnd,
+          "--animation-duration": animationDuration,
+        } as React.CSSProperties
+      }
     >
       {/* Glassmorphism overlay */}
       <div
-        className={`absolute inset-0 w-full h-full rounded-full backdrop-blur-md bg-white/20 shadow-lg`}
+        className="absolute inset-0 w-full h-full backdrop-blur-md bg-white/20"
         style={{
           borderRadius: radiusOptions.at(
-            (randomIdx % (radiusOptions.length - 1)) - 1
+            (randomIdx % radiusOptions.length) - 1
           ),
         }}
       />
