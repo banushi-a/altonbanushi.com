@@ -9,7 +9,7 @@ const Home = (): JSX.Element => {
   const { showBlob } = useUi();
 
   return (
-    <div className="overflow-clip bg-my-blue relative">
+    <div className="overflow-clip bg-white relative">
       <Header />
       <section className="w-screen min-h-screen flex flex-col items-center justify-around font-serif">
         <Hero />
