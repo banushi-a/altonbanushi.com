@@ -2,21 +2,26 @@ import Header from "../components/Header";
 import Hero from "../sections/Hero";
 import AboutMe from "../sections/Experience";
 import Footer from "../components/Footer";
-import BlobContainer from "../components/BlobContainer";
-import { useUi } from "../context/UiContext";
+import MeshBackground from "../components/MeshBackground";
 
 const Home = (): JSX.Element => {
-  const { showBlob } = useUi();
-
   return (
-    <div className="overflow-clip bg-white relative">
+    <div className="overflow-clip bg-black relative">
+      {/* Mesh background with varying opacity across sections */}
+      <div className="fixed inset-0 pointer-events-none">
+        <MeshBackground />
+      </div>
+
       <Header />
-      <section className="w-screen min-h-screen flex flex-col items-center justify-around font-serif">
+      <section className="w-screen min-h-screen flex flex-col items-center justify-center font-serif relative z-10">
         <Hero />
       </section>
-      {showBlob && <BlobContainer />}
-      <AboutMe />
-      <Footer />
+      <div className="relative z-10">
+        <AboutMe />
+      </div>
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 };

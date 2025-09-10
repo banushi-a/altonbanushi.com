@@ -15,9 +15,9 @@ const GlowingText = ({
 
   return (
     <h2
-      className={`${sizeStyle} hover:text-white/75 transition-all duration-700 relative group font-medium`}
+      className={`${sizeStyle} text-white hover:text-white/90 transition-all duration-700 relative group font-medium`}
     >
-      <span className="absolute inset-0 blur-lg opacity-0 group-hover:opacity-100 group-hover:blur-xl transition-all duration-700 ease-in-out bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></span>
+      <span className="absolute inset-0 blur-lg opacity-0 group-hover:opacity-60 group-hover:blur-xl transition-all duration-700 ease-in-out bg-gradient-to-r from-my-teal to-my-purple"></span>
       <span className="relative">
         <a href={href} target="_blank" rel="noreferrer">
           {text}

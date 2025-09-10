@@ -47,7 +47,7 @@ const Experience = (): JSX.Element => {
       <GlowingText text="experience" size="H2" />
       <div className="relative w-full max-w-[69rem]">
         {/* Vertical center line for desktop timeline */}
-        <div className="hidden md:block absolute w-[3px] h-full left-1/2 transform -translate-x-1/2 bg-black" />
+        <div className="hidden md:block absolute w-[3px] h-full left-1/2 transform -translate-x-1/2 bg-gray-600" />
         {timelineItems.map((item, index) => (
           <TimelineItem key={index} item={item} index={index} />
         ))}

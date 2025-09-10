@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "my-green": "#41ff11",
+        "my-purple": "#a855f7",  // purple-500 to match blob theme
         "my-teal": "#3ca6b9",
       },
       fontFamily: {
