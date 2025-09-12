@@ -6,7 +6,7 @@ import MeshBackground from "../components/MeshBackground";
 
 const Home = (): JSX.Element => {
   return (
-    <div className="overflow-clip bg-black relative">
+    <div className="min-h-screen min-h-dvh overflow-clip bg-black relative">
       {/* Mesh background with varying opacity across sections */}
       <div className="fixed inset-0 pointer-events-none">
         <MeshBackground />
