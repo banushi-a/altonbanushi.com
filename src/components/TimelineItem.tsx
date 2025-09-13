@@ -68,11 +68,10 @@ const TimelineItem = ({ item, index }: TimelineItemProps) => {
         opacity: 1,
         scale: 1,
         duration: 0.5,
-        ease: "power2.out",
+        ease: "circ.in",
         scrollTrigger: {
           trigger: item,
           start: "top 75%",
-          end: "bottom 25%",
           toggleActions: "play none none reverse",
         },
       });
