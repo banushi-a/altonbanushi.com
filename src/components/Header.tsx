@@ -1,5 +1,7 @@
 import GlowingText from "./GlowingText";
 
+const pageSections = [{ text: "experience", href: "#experience" }];
+
 const headerLinks = [
   { text: "resume", href: require("../resume-alton-banushi.pdf") },
   { text: "linkedin", href: "https://www.linkedin.com/in/alton-banushi/" },
@@ -12,8 +14,25 @@ const Header = (): JSX.Element => {
       <nav className="backdrop-blur-md bg-gray-900/50 border border-gray-700/50 rounded-2xl px-8 py-4 shadow-lg">
         {/* Centered Navigation links */}
         <div className="flex items-center justify-center gap-6 lg:gap-8">
+          {pageSections.map((link, index) => (
+            <div
+              key={index + "pageSection"}
+              className="transform hover:scale-105 transition-transform duration-200"
+            >
+              <GlowingText
+                text={link.text}
+                size="H3"
+                href={link.href}
+                target="_self"
+              />
+            </div>
+          ))}
+          <p className="hover:cursor-default">|</p>
           {headerLinks.map((link, index) => (
-            <div key={index} className="transform hover:scale-105 transition-transform duration-200">
+            <div
+              key={index}
+              className="transform hover:scale-105 transition-transform duration-200"
+            >
               <GlowingText text={link.text} size="H3" href={link.href} />
             </div>
           ))}
