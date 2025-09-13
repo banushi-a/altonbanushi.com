@@ -39,49 +39,49 @@ code {
 
 @keyframes meshFloat {
   0%, 100% { 
-    transform: translate(0, 0); 
+    transform: translate3d(0, 0, 0); 
   }
   25% { 
-    transform: translate(2px, -2px); 
+    transform: translate3d(2px, -2px, 0); 
   }
   50% { 
-    transform: translate(-1px, 1px); 
+    transform: translate3d(-1px, 1px, 0); 
   }
   75% { 
-    transform: translate(1px, 2px); 
+    transform: translate3d(1px, 2px, 0); 
   }
 }
 
 @keyframes meshGlow {
   0%, 100% { 
     opacity: 0.7;
-    transform: scale(1) rotate(0deg);
+    transform: scale3d(1, 1, 1) rotate(0deg) translateZ(0);
   }
   25% { 
     opacity: 1;
-    transform: scale(1.15) rotate(1deg);
+    transform: scale3d(1.15, 1.15, 1) rotate(1deg) translateZ(0);
   }
   50% { 
     opacity: 0.9;
-    transform: scale(1.2) rotate(0deg);
+    transform: scale3d(1.2, 1.2, 1) rotate(0deg) translateZ(0);
   }
   75% { 
     opacity: 1;
-    transform: scale(1.1) rotate(-1deg);
+    transform: scale3d(1.1, 1.1, 1) rotate(-1deg) translateZ(0);
   }
 }
 
 @keyframes meshPulse {
   0%, 100% { 
     opacity: 0.4;
-    transform: translateX(0px) translateY(0px);
+    transform: translate3d(0, 0, 0);
   }
   33% { 
     opacity: 0.8;
-    transform: translateX(2px) translateY(-1px);
+    transform: translate3d(2px, -1px, 0);
   }
   66% { 
     opacity: 0.9;
-    transform: translateX(-1px) translateY(2px);
+    transform: translate3d(-1px, 2px, 0);
   }
 }
