@@ -13,7 +13,7 @@ const GlowingText = ({
 }: GlowingTextProps): JSX.Element => {
   let sizeStyle = "text-8xl lg:text-9xl font-abril";
   if (size === "H2") sizeStyle = "text-7xl lg:text-8xl font-abril";
-  if (size === "H3") sizeStyle = "text-base sm:text-xl lg:text-2xl font-sans";
+  if (size === "H3") sizeStyle = "text-lg sm:text-xl lg:text-2xl font-sans";
 
   return (
     <h2

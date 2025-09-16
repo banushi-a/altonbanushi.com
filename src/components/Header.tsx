@@ -56,7 +56,7 @@ const Header = (): JSX.Element => {
             aria-label="Toggle menu"
           >
             <svg
-              className={`w-6 h-6 transform transition-transform duration-300 ease-in-out ${
+              className={`w-6 h-6 transform transition-transform duration-500 ease-in-out ${
                 isMenuOpen ? "rotate-180" : ""
               }`}
               fill="none"
@@ -74,11 +74,13 @@ const Header = (): JSX.Element => {
 
           {/* Mobile expanded menu items - grows the navbar itself */}
           <div
-            className={`overflow-hidden transition-all duration-500 ease-in-out ${
-              isMenuOpen ? "max-h-96 opacity-100 px-4" : "max-h-0 opacity-0 px-0"
+            className={`transition-all duration-500 ease-in-out ${
+              isMenuOpen
+                ? "max-h-96 opacity-100 px-4"
+                : "max-h-0 opacity-0 px-0 overflow-hidden"
             }`}
           >
-            <div className="pt-6 border-t border-gray-700/30 mt-4">
+            <div className="pt-6 border-t border-gray-700/30 my-4">
               <div className="flex flex-col items-center gap-6 px-6">
                 {allLinks.map((link, index) => (
                   <div
