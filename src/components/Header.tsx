@@ -86,7 +86,7 @@ const Header = (): JSX.Element => {
                   <div
                     key={index}
                     onClick={handleLinkClick}
-                    className="transform hover:scale-105 transition-transform duration-200"
+                    className="transform hover:scale-110 transition-transform duration-200"
                   >
                     <GlowingText
                       text={link.text}
