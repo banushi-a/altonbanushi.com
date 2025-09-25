@@ -1,6 +1,6 @@
 import GlowingText from "../components/GlowingText";
 import GameCard, { type GameData } from "../components/GameCard";
-import QueensThumbnail from "../assets/images/queensThumbnail.png";
+// import QueensThumbnail from "../assets/images/queensThumbnail.png";
 
 const sampleGames: GameData[] = [
   // {
