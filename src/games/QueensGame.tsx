@@ -33,29 +33,57 @@ const QueensGame = (): JSX.Element => {
   const [gameState, setGameState] = useState<Cell[][]>(initializeGrid());
   const [showInstructions, setShowInstructions] = useState(false);
   const instructionsRef = useRef<HTMLDivElement>(null);
+  const [isMouseDown, setIsMouseDown] = useState(false);
 
-  const handleCellClick = (row: number, col: number) => {
+  const getNextState = (row: number, col: number) => {
+    const cell = gameState[row][col];
+    switch (cell.state) {
+      case CellState.EMPTY:
+        return CellState.USER_CROSSED;
+      case CellState.USER_CROSSED:
+      case CellState.AUTO_CROSSED:
+        return CellState.SELECTED;
+      case CellState.SELECTED:
+      default:
+        return CellState.EMPTY;
+    }
+  };
+
+  const toggleCell = (row: number, col: number) => {
     setGameState((prev) => {
-      const newState = prev.map((r) => [...r]);
-      const cell = newState[row][col];
-
-      // Toggle cell state based on current state
-      switch (cell.state) {
-        case CellState.EMPTY:
-          cell.state = CellState.SELECTED;
-          break;
-        case CellState.SELECTED:
-          cell.state = CellState.USER_CROSSED;
-          break;
-        case CellState.USER_CROSSED:
-          cell.state = CellState.EMPTY;
-          break;
-        default:
-          break;
-      }
-
+      const newState = prev.map((r, rIdx) => {
+        if (rIdx === row) {
+          return r.map((obj, cIdx) => {
+            if (cIdx === col) {
+              return { ...obj, state: getNextState(row, col) };
+            }
+            return obj;
+          });
+        }
+        return r;
+      });
       return newState;
     });
+  };
+
+  const handleMouseDown = (row: number, col: number) => {
+    if (gameState[row][col].state === CellState.EMPTY) {
+      setIsMouseDown(true);
+    }
+    toggleCell(row, col);
+  };
+
+  const handleMouseEnter = (row: number, col: number) => {
+    if (isMouseDown) {
+      // Mark cell as crossed if empty (this handles dragging)
+      if (gameState[row][col].state === CellState.EMPTY) {
+        setGameState((prev) => {
+          const newState = prev.map((r) => [...r]);
+          newState[row][col].state = CellState.USER_CROSSED;
+          return newState;
+        });
+      }
+    }
   };
 
   const getCellDisplayClass = (cell: Cell): string => {
@@ -98,6 +126,20 @@ const QueensGame = (): JSX.Element => {
     };
   }, [showInstructions]);
 
+  // Global mouse up event for ending drag
+  useEffect(() => {
+    const handleGlobalMouseUp = () => {
+      if (isMouseDown) {
+        setIsMouseDown(false);
+      }
+    };
+
+    document.addEventListener("mouseup", handleGlobalMouseUp);
+    return () => {
+      document.removeEventListener("mouseup", handleGlobalMouseUp);
+    };
+  }, [isMouseDown]);
+
   return (
     <div className="flex flex-col items-center gap-6 p-6 font-sans relative">
       {/* Help Button - Top Right */}
@@ -120,9 +162,10 @@ const QueensGame = (): JSX.Element => {
           <div className="text-sm text-gray-300">
             <p className="font-semibold text-white mb-2">Instructions:</p>
             <ul className="space-y-1">
-              <li>• Click once to mark as crossed (×)</li>
-              <li>• Click again to place a queen (♛)</li>
-              <li>• Click a third time to clear the cell</li>
+              <li>• Click to cycle: empty → crossed (×) → queen (♛) → empty</li>
+              <li>
+                • <strong>Drag</strong> from empty cell to mark path as crossed
+              </li>
             </ul>
             <p className="text-xs text-gray-400 mt-3">
               Goal: Place exactly one queen in each column and row without two
@@ -132,7 +175,7 @@ const QueensGame = (): JSX.Element => {
         </div>
       )}
 
-      <div className="grid grid-cols-8 bg-black p-1 rounded-lg shadow-2xl">
+      <div className="grid grid-cols-8 bg-black p-1 rounded-lg shadow-2xl select-none">
         {gameState.map((row, rowIndex) =>
           row.map((cell, colIndex) => (
             <div
@@ -141,7 +184,8 @@ const QueensGame = (): JSX.Element => {
               style={{
                 backgroundColor: cell.color,
               }}
-              onClick={() => handleCellClick(rowIndex, colIndex)}
+              onMouseDown={() => handleMouseDown(rowIndex, colIndex)}
+              onMouseEnter={() => handleMouseEnter(rowIndex, colIndex)}
             >
               {getCellContent(cell)}
             </div>
