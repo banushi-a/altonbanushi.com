@@ -1,7 +1,10 @@
 import { useState } from "react";
 import GlowingText from "./GlowingText";
 
-const pageSections = [{ text: "experience", href: "#experience" }];
+const pageSections = [
+  { text: "experience", href: "#experience" },
+  { text: "games", href: "/#games" }
+];
 
 const headerLinks = [
   { text: "resume", href: require("../resume-alton-banushi.pdf") },

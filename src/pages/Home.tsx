@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import Hero from "../sections/Hero";
 import Experience from "../sections/Experience";
+import Games from "../sections/Games";
 import Footer from "../components/Footer";
 import MeshBackground from "../components/MeshBackground";
 
@@ -18,6 +19,9 @@ const Home = (): JSX.Element => {
       </section>
       <div id="experience" className="relative z-10">
         <Experience />
+      </div>
+      <div id="games" className="relative z-10">
+        <Games />
       </div>
       <div className="relative z-10">
         <Footer />
