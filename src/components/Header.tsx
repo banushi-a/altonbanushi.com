@@ -2,8 +2,8 @@ import { useState } from "react";
 import GlowingText from "./GlowingText";
 
 const pageSections = [
-  { text: "experience", href: "#experience" },
-  { text: "games", href: "/#games" }
+  { text: "experience", href: "/#experience" },
+  { text: "games", href: "/#games" },
 ];
 
 const headerLinks = [
