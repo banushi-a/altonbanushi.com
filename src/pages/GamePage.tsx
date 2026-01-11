@@ -23,7 +23,7 @@ const GamePage = (): JSX.Element => {
             </p>
             <Link
               to="/#games"
-              className="inline-block bg-my-teal/20 border border-my-teal/50 hover:bg-my-teal/30 hover:border-my-teal text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(60,166,185,0.5)]"
+              className="inline-block font-sans bg-my-teal/20 border border-my-teal/50 hover:bg-my-teal/30 hover:border-my-teal text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(60,166,185,0.5)]"
             >
               ← Back to Games
             </Link>
@@ -37,7 +37,9 @@ const GamePage = (): JSX.Element => {
       <div className="max-w-6xl mx-auto">
         <div className="text-center my-8">
           <GlowingText text={gameInfo.name} size="H2" />
-          <p className="text-gray-300 text-lg mt-4">{gameInfo.description}</p>
+          <p className="text-gray-300 text-lg mt-4 font-sans">
+            {gameInfo.description}
+          </p>
         </div>
 
         <div className="bg-gray-900/30 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm">
@@ -47,7 +49,7 @@ const GamePage = (): JSX.Element => {
         <div className="text-center mt-8">
           <Link
             to="/#games"
-            className="inline-block bg-my-teal/20 border border-my-teal/50 hover:bg-my-teal/30 hover:border-my-teal text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(60,166,185,0.5)]"
+            className="inline-block font-sans bg-my-teal/20 border border-my-teal/50 hover:bg-my-teal/30 hover:border-my-teal text-white px-6 py-3 rounded-lg transition-all duration-300 hover:shadow-[0_0_20px_rgba(60,166,185,0.5)]"
           >
             ← Back to Games
           </Link>

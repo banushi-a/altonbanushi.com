@@ -14,13 +14,17 @@ export interface Cell {
 
 const GRID_SIZE = 5;
 
-// Generate random colors for the game
-const generateRandomColor = (): string => {
-  const hue = Math.floor(Math.random() * 360);
-  const saturation = 60 + Math.floor(Math.random() * 20); // 60-80%
-  const lightness = 65 + Math.floor(Math.random() * 15); // 65-80%
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-};
+// Predefined color palette
+const COLOR_PALETTE = [
+  "rgb(239, 130, 104)", // red
+  "rgb(158, 190, 250)", // blue
+  "rgb(188, 221, 166)", // green
+  "rgb(247, 203, 154)", // orange
+  "rgb(233, 242, 150)", // yellow
+  "rgb(183, 165, 222)", // purple
+  "rgb(223, 223, 223)", // lightGray
+  "rgb(184, 178, 160)", // darkGray
+];
 
 // Check if a position is valid for placing a queen
 const isValidQueenPosition = (
@@ -90,8 +94,8 @@ const createColorBoundaries = (
     .fill(null)
     .map(() => Array(gridSize).fill(""));
 
-  // Generate a color for each queen
-  const queenColors = queens.map(() => generateRandomColor());
+  // Assign colors from the palette to each queen (in order)
+  const queenColors = queens.map((_, idx) => COLOR_PALETTE[idx % COLOR_PALETTE.length]);
 
   // Assign each queen's cell its color
   queens.forEach((queen, idx) => {
@@ -422,7 +426,7 @@ const QueensGame = (): JSX.Element => {
     <div className="flex flex-col items-center gap-6 p-6 font-sans relative">
       {/* Victory Pop-up */}
       {hasWon && (
-        <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-50">
           <div
             ref={victoryRef}
             className="bg-gradient-to-br from-green-500 to-teal-600 border-4 border-yellow-400 rounded-2xl p-8 shadow-2xl transform animate-bounce-in max-w-md"
